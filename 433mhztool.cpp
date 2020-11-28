@@ -91,9 +91,9 @@ int main(int argc, char **argv)
         }
         else if( statestr.compare("dim") == 0 ) 
         {
-	    msg[3] = (char) dim;
-	   // msg[4] = value	
-	    msg[4] = (char) atol(argv[4]);
+            msg[3] = (char) dim;
+        // msg[4] = value	
+            msg[4] = (char) atol(argv[4]);
         }
         else 
         {

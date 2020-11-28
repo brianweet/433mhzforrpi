@@ -24,24 +24,24 @@ int send433mhz(deviceType devicetype, int address, int device, deviceCommand com
     {
         case newkaku:
         {
-        NewRemoteTransmitter transmitter(address, PIN_OUT, 260, 3);
-        if (device == 0)
-	{
-            transmitter.sendGroup(command == on);
-        }
-        else
-        {
-            if (command != dim)
+            NewRemoteTransmitter transmitter(address, PIN_OUT, 260, 3);
+            if (device == 0)
             {
-                printf ("device=newkaku address1=%d address2=%d command=%s\n", address, device, command==on?"on":"off");
-                transmitter.sendUnit(device, command == on);
+                    transmitter.sendGroup(command == on);
             }
             else
             {
-                printf ("device=newkaku address1=%d address2=%d command=dim value=\n", address, device, value);
-                transmitter.sendDim(device, value);
+                if (command != dim)
+                {
+                    printf ("device=newkaku address1=%d address2=%d command=%s\n", address, device, command==on?"on":"off");
+                    transmitter.sendUnit(device, command == on);
+                }
+                else
+                {
+                    printf ("device=newkaku address1=%d address2=%d command=dim value=%d\n", address, device, value);
+                    transmitter.sendDim(device, value);
+                }
             }
-        }
         }
         break;
         case oldkaku:
